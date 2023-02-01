@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.util.concurrent.TimeUnit;
@@ -25,9 +26,13 @@ public class Driver {
         String browser = ConfigReader.getProperty("browser");
         if (driver==null || ((RemoteWebDriver)driver).getSessionId()==null){
             switch (browser) {
+
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
                     ChromeOptions optionsChrome = new ChromeOptions();
+                    optionsChrome.addArguments("--disable-popup-blocking");
+                    DesiredCapabilities desiredCapabilities=new DesiredCapabilities();
+                    desiredCapabilities.setCapability(ChromeOptions.CAPABILITY,optionsChrome);
                     optionsChrome.setHeadless(false);
                     driver = new ChromeDriver(optionsChrome);
                     break;

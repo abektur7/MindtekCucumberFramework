@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         //features = "src/test/resources/features/OrangeApp.feature",
         glue = "steps",
-        tags = "@RTB-5",
+        tags = "@MTB-664",
         dryRun = false,
         publish = true
 

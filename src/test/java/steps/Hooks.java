@@ -27,10 +27,14 @@ public class Hooks {
         } else if (webApp.equals("RedShelfApp")) {
             driver.get(ConfigReader.getProperty("RedShelfURL"));
         }
+        else if (webApp.equals("Guru99App")) {
+            driver.get(ConfigReader.getProperty("Guru99AppURL"));
+        }
     }
     @Before
     public void setUp(){
         driver.manage().window().maximize();
+        driver.manage().deleteAllCookies();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().deleteAllCookies();
         System.out.println("Method runs before scenario");
